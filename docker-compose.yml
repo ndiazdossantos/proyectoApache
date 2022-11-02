@@ -1,0 +1,11 @@
+services:
+  apache:
+    container_name: apachePHP
+    image: php:7.2-apache
+    ports:
+      - 80:80/udp
+      - 80:80/tcp
+    volumes:
+      - /home/noe/proyectoApache/sitio1:/var/www/html
+
+
