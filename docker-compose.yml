@@ -7,10 +7,5 @@ services:
       - 80:80/tcp
     volumes:
       - /home/noe/proyectoApache/sitio1:/var/www/html
-      - confApache:/etc/apache2
-
-volumes:
-  confApache:
-     
-
+      - ./confApache:/etc/apache2
 
