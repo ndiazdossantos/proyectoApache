@@ -67,10 +67,10 @@ services:
       - /home/noe/proyectoApache/sitio1:/var/www/html
 ```
 
-De esta manera si levantamos el servicio ejecutando en el terminal ```docker-compose up``` podremos visualizar desde nuestro buscador el  [**Localhost**](http://localhost/) con el [**Hola Mundo**](https://github.com/ndiazdossantos/proyectoApache/blob/master/sitio1/index.php) que hemos indicado previamente.
+De esta manera si levantamos el servicio ejecutando en el terminal ```docker-compose up``` podremos visualizar desde nuestro buscador el  [**localhost**](http://localhost/) con el [**Hola Mundo**](https://github.com/ndiazdossantos/proyectoApache/blob/master/sitio1/index.php) que hemos indicado previamente.
 
 
-_![GIF](https://i.imgur.com/mOFSQJB.gif)_
+_![GIF](https://github.com/ndiazdossantos/proyectoApache/blob/master/pictures/mOFSQJB.gif)_
 
 
 [README.md](README.md) de Noé Díaz Dos Santos para el repositorio [Proyecto Apache](https://github.com/ndiazdossantos/proyectoApache)
