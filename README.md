@@ -82,25 +82,25 @@ _![Imagen](https://github.com/ndiazdossantos/proyectoApache/blob/master/pictures
 
 Una vez abierto seleccionaremos todo el contenido de los ficheros de configuración, el cual "pegaremos" en una carpeta nueva que creemos en nuestro directorio del Proyecto apache denominado [**confApache**](https://github.com/ndiazdossantos/proyectoApache).
 
-Como vamos a mapear nuestro directorio ```confApache``` al directorio de configuración del servidor Apache en el volumen, debemos actualizar el ```docker-compose.yml```.
+Como vamos a mapear nuestro directorio [```confApache```](https://github.com/ndiazdossantos/proyectoApache/tree/master/confApache) al directorio de configuración del servidor Apache en el volumen, debemos actualizar el [```docker-compose.yml```](https://github.com/ndiazdossantos/proyectoApache/blob/master/docker-compose.yml).
     
-```
+```yml
     volumes:
       - /home/noe/proyectoApache/sitio1:/var/www/html
       - ./confApache:/etc/apache2
 
 ```
 
-Crearemos un nuevo sitio como indicamos en el apartado de creación de sitios, lo denominaremos [**Sitio2**](https://github.com/ndiazdossantos/proyectoApache/tree/master/html/sitio2) para posteriormente poder mapearlo con el anterior y no independientemente, por lo que debemos modificar el ```docker-compose.yml``` añadiendo el directorio principal de sitios ```html```donde se encuentra el **sitio1** y el **sitio2**.
+Crearemos un nuevo sitio como indicamos en el apartado de creación de sitios, lo denominaremos [**Sitio2**](https://github.com/ndiazdossantos/proyectoApache/tree/master/html/sitio2) para posteriormente poder mapearlo con el anterior y no independientemente, por lo que debemos modificar el [```docker-compose.yml```](https://github.com/ndiazdossantos/proyectoApache/blob/master/docker-compose.yml) añadiendo el directorio principal de sitios ```html``` donde se encuentra el **sitio1** y el **sitio2**.
 
-```
+```yml
     volumes:
       - ./html:/var/www/html
 
 ```
 Posteriormente accedemos al fichero de configuración de los [```ports.conf```](https://github.com/ndiazdossantos/proyectoApache/blob/master/confApache/ports.conf) donde estableceremos los puertos que escucha, en nuestro caso especificamos en la línea 5-6 los puertos 80 y 8000 indicando : **Listen 80** y **Listen 8000**.
 
-```
+```xml
 # If you just change the port or add more ports here, you will likely also
 # have to change the VirtualHost statement in
 # /etc/apache2/sites-enabled/000-default.conf
@@ -126,7 +126,7 @@ En cada uno establecemos el **Puerto** en la línea 1 y el **DocumentRoot** en l
 
 *Sitio1 000-default.conf*
 
-```
+```xml
 
 <VirtualHost *:80>
 	# The ServerName directive sets the request scheme, hostname and port that
@@ -165,7 +165,7 @@ En cada uno establecemos el **Puerto** en la línea 1 y el **DocumentRoot** en l
 
 *Sitio2 002-default.conf*
 
-```
+```xml
 
 <VirtualHost *:8000>
 	# The ServerName directive sets the request scheme, hostname and port that
@@ -201,7 +201,7 @@ En cada uno establecemos el **Puerto** en la línea 1 y el **DocumentRoot** en l
 
 ```
 
-Replicaremos los pases en el aspecto en el que en [```sites-enabled```](https://github.com/ndiazdossantos/proyectoApache/tree/master/confApache/sites-enabled) donde replicaremos el fichero [```000-default.conf```](https://github.com/ndiazdossantos/proyectoApache/blob/master/confApache/sites-enabled/000-default.conf) y haremos su réplica en [```002-default.conf```](https://github.com/ndiazdossantos/proyectoApache/blob/master/confApache/sites-enabled/002-default.conf) y modicaremos los mismos parámetros que en ```sites-available```.
+Replicaremos los pases en el aspecto en el que en [```sites-enabled```](https://github.com/ndiazdossantos/proyectoApache/tree/master/confApache/sites-enabled) donde replicaremos el fichero [```000-default.conf```](https://github.com/ndiazdossantos/proyectoApache/blob/master/confApache/sites-enabled/000-default.conf) y haremos su réplica en [```002-default.conf```](https://github.com/ndiazdossantos/proyectoApache/blob/master/confApache/sites-enabled/002-default.conf) y modicaremos los mismos parámetros que en [```sites-available```](https://github.com/ndiazdossantos/proyectoApache/tree/master/confApache/sites-available).
 
 Establecemos un ```index.php``` cualquiera en cada uno de nuestros sitios, una vez hagamos *docker-compose up* (Habiendo eliminado previamente *docker-compose down -v* los volúmenes) estos se visualizarán, si vamos a nuestro buscador podremos comprobar que el **sitio1** cargará con ```localhost:80```(por defecto es el :80 si introducimos localhost) y el **sitio2** en ```localhost:8000```.
 
