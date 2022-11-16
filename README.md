@@ -78,7 +78,7 @@ Nosotros queremos modificar la configuración de nuestro servidor Apache, para e
 
 *Primeramente abrimos dicho volumen en una pestaña aparte*
 
-_![Imagen](https://i.imgur.com/fXK7WvP.png)_
+_![Imagen](https://github.com/ndiazdossantos/proyectoApache/blob/master/pictures/volumenIndependiente.png)_
 
 Una vez abierto seleccionaremos todo el contenido de los ficheros de configuración, el cual "pegaremos" en una carpeta nueva que creemos en nuestro directorio del Proyecto apache denominado [**confApache**](https://github.com/ndiazdossantos/proyectoApache).
 
@@ -207,7 +207,7 @@ Establecemos un ```index.php``` cualquiera en cada uno de nuestros sitios, una v
 
 *Comprobación*
 
-_[GIF2](https://i.imgur.com/G68JBqk.gif)_
+_![GIF2](https://github.com/ndiazdossantos/proyectoApache/blob/master/pictures/comprobacionSitiosPuertos.gif)_
 
 
 [README.md](README.md) de Noé Díaz Dos Santos para el repositorio [Proyecto Apache](https://github.com/ndiazdossantos/proyectoApache)
