@@ -10,4 +10,7 @@ $TTL    3600
 @       IN      A       10.1.0.253
 
 ns     IN      A       10.1.0.254
+maravillosas     IN      A       10.1.0.254
+oscuras     IN      CNAME       maravillosas
+
 
