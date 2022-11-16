@@ -2,10 +2,31 @@ services:
   apache:
     container_name: apachePHP
     image: php:7.2-apache
+    networks:
+      bind9_subnet:
+        ipv4_address: 10.1.0.253
     ports:
-      - 80:80/udp
-      - 80:80/tcp
+      - '80:80'
+      - '8000:8000'
+  
     volumes:
-      - /home/noe/proyectoApache/sitio1:/var/www/html
+      - ./html:/var/www/html
       - ./confApache:/etc/apache2
-
+  bind9:
+    container_name: asir1_bind9
+    image: internetsystemsconsortium/bind9:9.16
+    ports:
+      - 5300:53/udp
+      - 5300:53/tcp
+    networks:
+      bind9_subnet:
+        ipv4_address: 10.1.0.254
+    volumes:
+      - ./conf:/etc/bind
+      - ./zonas:/var/lib/bind
+networks:
+  bind9_subnet:
+    external: true
+#primero hay que crearlo con un volumen /confApache:/etc/apache2 y con las siguientes lineas
+#volumes:
+# confApache:
