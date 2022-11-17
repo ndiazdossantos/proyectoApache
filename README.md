@@ -215,5 +215,51 @@ Primeramente para levantar el contenedor con un servidor de DNS y personalizarlo
 
 Por lo que antes de nada deberemos mover todas las carpetas y archivos de dicho proyecto a [```proyectoApache```](https://github.com/ndiazdossantos/proyectoApache), es decir, la carpeta [```conf```](https://github.com/ndiazdossantos/proyectoApache/tree/master/conf) y la carpeta [```zonas```](https://github.com/ndiazdossantos/proyectoApache/tree/master/zonas).
 
+Antes de centrarnos en modificar los ficheros de configuración de fichero apache vamos a implementarlo en nuestro [```docker-compose.yml```](https://github.com/ndiazdossantos/proyectoApache/blob/master/docker-compose.yml).
+
+Para ello deberemos crear una nueva red y asignar a cada contenedor una IP diferente.
+
+* **Contenedor bind9 con los sitios (Servidor DNS)**
+
+*Añadimos el apartado ```networks``` y asignamos la IP 10.1.0.254 creada previamente denominada ```bind9_subnet```*.
+
+```
+ bind9:
+    container_name: asir1_bind9
+    image: internetsystemsconsortium/bind9:9.16
+    ports:
+      - 5300:53/udp
+      - 5300:53/tcp
+    networks:
+      bind9_subnet:
+        ipv4_address: 10.1.0.254
+    volumes:
+      - ./conf:/etc/bind
+      - ./zonas:/var/lib/bind
+
+```
+
+* **Contenedor servidor Apache**
+
+*En este caso añadimos nuevamente como en el caso del servidor DNS la misma network pero en este caso con la IP ```10.1.0.253```*
+
+```
+services:
+  apache:
+    container_name: apachePHP
+    image: php:7.2-apache
+    networks:
+      bind9_subnet:
+        ipv4_address: 10.1.0.253
+    ports:
+      - '80:80'
+      - '8000:8000'
+  
+    volumes:
+      - ./html:/var/www/html
+      - ./confApache:/etc/apache2
+
+```
+
 
 [README.md](README.md) de Noé Díaz Dos Santos para el repositorio [Proyecto Apache](https://github.com/ndiazdossantos/proyectoApache)
