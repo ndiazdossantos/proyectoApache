@@ -379,4 +379,9 @@ Donde le asignaremos una nueva IP dentro de la misma red ```10.1.0.252``` y mape
 ```
 No recomendable si no vamos a configurarlo y no queremos +1000 ficheros de configuración.
 
+Una vez levantamos el servicio si accedemos desde nuestro buscador mediante el puerto que hemos indicado ```localhost:5800``` podemos realizar la comprobación de que nuestro servidor de DNS resuelva correctamente.
+
+_![GIF3](https://i.imgur.com/KHdGQLa.gif)_
+
+
 [README.md](README.md) de Noé Díaz Dos Santos para el repositorio [Proyecto Apache](https://github.com/ndiazdossantos/proyectoApache)
