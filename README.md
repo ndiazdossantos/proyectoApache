@@ -348,8 +348,35 @@ Ejemplificamos con el caso del **sitio1** que denominaremos como ```maravillosas
 
 Replicamos la modificación de los ficheros anteriores con los correspondientes con este directorio, tanto para el [```000-default.conf```](https://github.com/ndiazdossantos/proyectoApache/blob/master/confApache/sites-enabled/000-default.conf) como con [```002-default.conf```](https://github.com/ndiazdossantos/proyectoApache/blob/master/confApache/sites-enabled/002-default.conf).
 
+# Añadir firefox para comprobar funcionamiento
 
+Para añadir firefox como un contenedor y poder comprobar el funcionamiento de que nuestro Servidor DNS resuelve correctamente.
 
+Para ello debemos añadirlo a nuestro [```docker-compose.yml```](https://github.com/ndiazdossantos/proyectoApache/blob/master/docker-compose.yml).
 
+```
+
+ firefox:
+    container_name: firefox
+    image: jlesage/firefox
+    ports: 
+      - '5800:5800'
+    volumes:
+      - ./firefox:/config:rw
+    dns:
+      - 10.1.0.254
+    networks:
+      bind9_subnet:
+        ipv4_address: 10.1.0.252
+
+```
+Donde le asignaremos una nueva IP dentro de la misma red ```10.1.0.252``` y mapearemos su contenido de configuración donde indicamos con:
+
+```
+    volumes:
+      - ./firefox:/config:rw
+
+```
+No recomendable si no vamos a configurarlo y no queremos +1000 ficheros de configuración.
 
 [README.md](README.md) de Noé Díaz Dos Santos para el repositorio [Proyecto Apache](https://github.com/ndiazdossantos/proyectoApache)
