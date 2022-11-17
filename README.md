@@ -221,7 +221,7 @@ Para ello deberemos crear una nueva red y asignar a cada contenedor una IP difer
 
 * **Contenedor bind9 con los sitios (Servidor DNS)**
 
-*Añadimos el apartado ```networks``` y asignamos la IP 10.1.0.254 creada previamente denominada ```bind9_subnet```*.
+*Añadimos el apartado ```networks``` y asignamos la IP 10.1.0.254 creada previamente denominada ```bind9_subnet``` al igual que mapearemos los directorios del servidor DNS* .
 
 ```
  bind9:
@@ -260,6 +260,8 @@ services:
       - ./confApache:/etc/apache2
 
 ```
+
+Posteriormente nos centramos en los ficheros de configuración
 
 
 [README.md](README.md) de Noé Díaz Dos Santos para el repositorio [Proyecto Apache](https://github.com/ndiazdossantos/proyectoApache)
