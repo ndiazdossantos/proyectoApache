@@ -209,5 +209,11 @@ Establecemos un ```index.php``` cualquiera en cada uno de nuestros sitios, una v
 
 _![GIF2](https://github.com/ndiazdossantos/proyectoApache/blob/master/pictures/comprobacionSitiosPuertos.gif)_
 
+# Integración servidor DNS
+
+Primeramente para levantar el contenedor con un servidor de DNS y personalizarlo para nuestro caso particular, utilizaremos nuestro anterior proyecto [```Servidor DNS en Docker```](https://github.com/ndiazdossantos/Servidor-DNS-Docker).
+
+Por lo que antes de nada deberemos mover todas las carpetas y archivos de dicho proyecto a [```proyectoApache```](https://github.com/ndiazdossantos/proyectoApache), es decir, la carpeta [```conf```](https://github.com/ndiazdossantos/proyectoApache/tree/master/conf) y la carpeta [```zonas```](https://github.com/ndiazdossantos/proyectoApache/tree/master/zonas).
+
 
 [README.md](README.md) de Noé Díaz Dos Santos para el repositorio [Proyecto Apache](https://github.com/ndiazdossantos/proyectoApache)
