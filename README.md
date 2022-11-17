@@ -261,7 +261,95 @@ services:
 
 ```
 
-Posteriormente nos centramos en los ficheros de configuración
+Posteriormente nos centramos en los ficheros de configuración, vamos al apartado de [```zonas```](https://github.com/ndiazdossantos/proyectoApache/tree/master/zonas) y renombramos el archivo que hay en su interior a [```db.fabulas.com```](https://github.com/ndiazdossantos/proyectoApache/blob/master/zonas/db.fabulas.com)
+
+```
+$TTL    3600
+@       IN      SOA     ns.fabulas.com. root.fabulas.com. (
+                   2007010401           ; Serial
+                         3600           ; Refresh [1h]
+                          600           ; Retry   [10m]
+                        86400           ; Expire  [1d]
+                          600 )         ; Negative Cache TTL [1h]
+;
+@       IN      NS      ns.fabulas.com.
+ns       IN      A       10.1.0.254
+
+maravillosas     IN      A       10.1.0.253
+oscuras     IN      CNAME       maravillosas
+
+```
+
+En el especificaremos en el ```ns``` la IP ```10.1.0.254``` que se corresponde con la IP de nuestro servidor DNS, que es quien va a resolver.
+
+```
+ns       IN      A       10.1.0.254
+
+```
+
+Posteriormente especificamos que ```maravillosas``` se corresponda con la IP del servidor apache ```10.1.0.253```.
+
+```
+maravillosas     IN      A       10.1.0.253
+
+```
+Indicaremos un CNAME de manera que el subdominio ```maravillosas.fabulas.com``` resuelva a ```oscuras.fabulas.com```.
+
+```
+oscuras     IN      CNAME       maravillosas
+
+```
+
+Antes de nada debemos volver a nuestros ficheros de configuración en [```confApache```](https://github.com/ndiazdossantos/proyectoApache/tree/master/confApache) y editaremos:
+
+* [**sites-available**](https://github.com/ndiazdossantos/proyectoApache/tree/master/confApache/sites-available)
+
+En ambos casos debemos descomentar la línea 9 correspontiente al ```ServerName``` y cambiar su contendio al subdominio que se corresponda.
+
+Ejemplificamos con el caso del **sitio1** que denominaremos como ```maravillosas.fabulas.com``` en el fichero [```000-default.conf```](https://github.com/ndiazdossantos/proyectoApache/blob/master/confApache/sites-enabled/000-default.conf) y lo mismo sería con el **sitio2** que lo denominaríamos como ```oscuras.fabulas.com``` y se corresponde con [```002-default.conf```](https://github.com/ndiazdossantos/proyectoApache/blob/master/confApache/sites-available/002-default.conf).
+
+```xml
+<VirtualHost *:80>
+	# The ServerName directive sets the request scheme, hostname and port that
+	# the server uses to identify itself. This is used when creating
+	# redirection URLs. In the context of virtual hosts, the ServerName
+	# specifies what hostname must appear in the request's Host: header to
+	# match this virtual host. For the default virtual host (this file) this
+	# value is not decisive as it is used as a last resort host regardless.
+	# However, you must set it for any further virtual host explicitly.
+	ServerName maravillosas.fabulas.com
+
+	ServerAdmin webmaster@localhost
+	DocumentRoot /var/www/html/sitio1
+
+	# Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+	# error, crit, alert, emerg.
+	# It is also possible to configure the loglevel for particular
+	# modules, e.g.
+	#LogLevel info ssl:warn
+
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+	# For most configuration files from conf-available/, which are
+	# enabled or disabled at a global level, it is possible to
+	# include a line for only one particular virtual host. For example the
+	# following line enables the CGI configuration for this host only
+	# after it has been globally disabled with "a2disconf".
+	#Include conf-available/serve-cgi-bin.conf
+</VirtualHost>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+
+
+```
+
+* [**```sites-enabled```**](https://github.com/ndiazdossantos/proyectoApache/tree/master/confApache/sites-enabled)
+
+Replicamos la modificación de los ficheros anteriores con los correspondientes con este directorio, tanto para el [```000-default.conf```](https://github.com/ndiazdossantos/proyectoApache/blob/master/confApache/sites-enabled/000-default.conf) como con [```002-default.conf```](https://github.com/ndiazdossantos/proyectoApache/blob/master/confApache/sites-enabled/002-default.conf).
+
+
+
 
 
 [README.md](README.md) de Noé Díaz Dos Santos para el repositorio [Proyecto Apache](https://github.com/ndiazdossantos/proyectoApache)
