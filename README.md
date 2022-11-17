@@ -14,20 +14,20 @@ Donde indicamos el:
 
 - Nombre de nuestro servicio:
 
-```
+```yml
 services:
   apache:
 ```
 - Añadimos el nombre de nuestro contenedor ```container_name```:
 
-```
+```yml
 services:
   apache:
     container_name: apachePHP
 ```
 - La imagen del contenedor a usar  ```image``` incluyendo su versión:
 
-```
+```yml
 services:
   apache:
     container_name: apachePHP
@@ -35,7 +35,7 @@ services:
 ```
 - Los puertos en este caso TPC y UDP con el parámetro ```ports```:
 
-```
+```yml
 services:
   apache:
     container_name: apachePHP
@@ -55,7 +55,7 @@ En dicho directorio añadimos un [**Hola Mundo**](https://github.com/ndiazdossan
 
 Para mapear nuestro sitio para utilizarlo en el servidor de Apache, debemos especificarlo en el [```docker-compose.yml```](https://github.com/ndiazdossantos/proyectoApache/blob/master/docker-compose.yml) en el apatardo de ```volumes: ```, indicando que nuestro directorio [**Sitio1**](https://github.com/ndiazdossantos/proyectoApache/tree/master/sitio1) se corresponde con el ```/var/www/html``` de Apache.
 
-```
+```yml
 services:
   apache:
     container_name: apachePHP
@@ -223,7 +223,7 @@ Para ello deberemos crear una nueva red y asignar a cada contenedor una IP difer
 
 *Añadimos el apartado ```networks``` y asignamos la IP 10.1.0.254 creada previamente denominada ```bind9_subnet``` al igual que mapearemos los directorios del servidor DNS* .
 
-```
+```yml
  bind9:
     container_name: asir1_bind9
     image: internetsystemsconsortium/bind9:9.16
@@ -243,7 +243,7 @@ Para ello deberemos crear una nueva red y asignar a cada contenedor una IP difer
 
 *En este caso añadimos nuevamente como en el caso del servidor DNS la misma network pero en este caso con la IP ```10.1.0.253```*
 
-```
+```yml
 services:
   apache:
     container_name: apachePHP
@@ -263,7 +263,7 @@ services:
 
 Posteriormente nos centramos en los ficheros de configuración, vamos al apartado de [```zonas```](https://github.com/ndiazdossantos/proyectoApache/tree/master/zonas) y renombramos el archivo que hay en su interior a [```db.fabulas.com```](https://github.com/ndiazdossantos/proyectoApache/blob/master/zonas/db.fabulas.com)
 
-```
+```yml
 $TTL    3600
 @       IN      SOA     ns.fabulas.com. root.fabulas.com. (
                    2007010401           ; Serial
@@ -282,20 +282,20 @@ oscuras     IN      CNAME       maravillosas
 
 En el especificaremos en el ```ns``` la IP ```10.1.0.254``` que se corresponde con la IP de nuestro servidor DNS, que es quien va a resolver.
 
-```
+```yml
 ns       IN      A       10.1.0.254
 
 ```
 
 Posteriormente especificamos que ```maravillosas``` se corresponda con la IP del servidor apache ```10.1.0.253```.
 
-```
+```yml
 maravillosas     IN      A       10.1.0.253
 
 ```
 Indicaremos un CNAME de manera que el subdominio ```maravillosas.fabulas.com``` resuelva a ```oscuras.fabulas.com```.
 
-```
+```yml
 oscuras     IN      CNAME       maravillosas
 
 ```
@@ -354,7 +354,7 @@ Para añadir firefox como un contenedor y poder comprobar el funcionamiento de q
 
 Para ello debemos añadirlo a nuestro [```docker-compose.yml```](https://github.com/ndiazdossantos/proyectoApache/blob/master/docker-compose.yml).
 
-```
+```yml
 
  firefox:
     container_name: firefox
@@ -372,7 +372,7 @@ Para ello debemos añadirlo a nuestro [```docker-compose.yml```](https://github.
 ```
 Donde le asignaremos una nueva IP dentro de la misma red ```10.1.0.252``` y mapearemos su contenido de configuración donde indicamos con:
 
-```
+```yml
     volumes:
       - ./firefox:/config:rw
 
@@ -381,7 +381,7 @@ No recomendable si no vamos a configurarlo y no queremos +1000 ficheros de confi
 
 Una vez levantamos el servicio si accedemos desde nuestro buscador mediante el puerto que hemos indicado ```localhost:5800``` podemos realizar la comprobación de que nuestro servidor de DNS resuelva correctamente.
 
-_![GIF3](https://i.imgur.com/KHdGQLa.gif)_
+_![GIF3](https://github.com/ndiazdossantos/proyectoApache/blob/master/pictures/comprobacionFirefox.gif)_
 
 
 [README.md](README.md) de Noé Díaz Dos Santos para el repositorio [Proyecto Apache](https://github.com/ndiazdossantos/proyectoApache)
