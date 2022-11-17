@@ -1,15 +1,7 @@
-zone "sdfadfe2.com." {
+zone "fabulas.com." {
         type master;
-        file "/var/lib/bind/db.sdfadfe2.com";
+        file "/var/lib/bind/db.fabulas.com";
         allow-query{
             any;
         };
 };    
-
-zone "sdfadfe21.com." {
-        type master;
-        file "/var/lib/bind/db.sdfadfe21.com";
-        allow-query{
-            any;
-        };
-};     
