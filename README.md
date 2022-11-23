@@ -407,7 +407,7 @@ openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out apache-cer
 En el especificaremos todos los parámetros que se nos indica, se generarán dos archivos, uno denominado ```apache-certificate.crt``` y ```apache.key```, por seguridad github no nos dejará subir dichos ficheros.
 
 
-Posteriormente dentro de nuestra carpeta [**````html```**](https://github.com/ndiazdossantos/proyectoApache/tree/master/html) creamos una nueva llamada [**```SSL```**](https://github.com/ndiazdossantos/proyectoApache/tree/master/html/ssl) donde almacenaremos un [**```index.html```**](https://github.com/ndiazdossantos/proyectoApache/blob/master/html/ssl/index.html) para comprobar finalmente el funcionamiento de nuestro SSL.
+Posteriormente dentro de nuestra carpeta [**```html```**](https://github.com/ndiazdossantos/proyectoApache/tree/master/html) creamos una nueva llamada [**```SSL```**](https://github.com/ndiazdossantos/proyectoApache/tree/master/html/ssl) donde almacenaremos un [**```index.html```**](https://github.com/ndiazdossantos/proyectoApache/blob/master/html/ssl/index.html) para comprobar finalmente el funcionamiento de nuestro SSL.
 
 Para habilitar el SSL del virtualhost utilizaremos los siguientes comandos:
 
