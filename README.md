@@ -383,5 +383,11 @@ Una vez levantamos el servicio si accedemos desde nuestro buscador mediante el p
 
 _![GIF3](https://github.com/ndiazdossantos/proyectoApache/blob/master/pictures/comprobacionFirefox.gif)_
 
+# Añadir SSL
+
+```s
+openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out apache-certificate.crt -keyout apache.key
+
+```
 
 [README.md](README.md) de Noé Díaz Dos Santos para el repositorio [Proyecto Apache](https://github.com/ndiazdossantos/proyectoApache)
