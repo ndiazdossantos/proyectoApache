@@ -591,4 +591,43 @@ Y si entramos en nuestro buscador y realizamos la consulta ```https://localhost/
 
 _![GIF4](https://github.com/ndiazdossantos/proyectoApache/blob/master/pictures/comprobacionSSL.gif)_
 
+
+# Añadir Wireshark
+
+Para ello añadimos a nuestro [```docker-compose.yml```](https://github.com/ndiazdossantos/proyectoApache/blob/master/docker-compose.yml):
+
+```yml
+  wireshark:
+    image: lscr.io/linuxserver/wireshark:latest
+    container_name: wireshark
+    cap_add:
+      - NET_ADMIN
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - ./wireshark:/config
+    ports:
+      - 3000:3000 #optional
+    restart: unless-stopped
+
+```
+Creamos una carpeta llamada ```wireshark``` que es en donde mapearemos el volumen como indicamos en el [```docker-compose.yml```](https://github.com/ndiazdossantos/proyectoApache/blob/master/docker-compose.yml) y posteriormente ejecutamos:
+
+```s
+$ docker-compose down -v
+$ docker-compose up
+
+```
+
+Y si probamos a acceder desde ```https://localhost:3000``` podemos comprobar que ya tenemos nuestro **Wireshark** funcionando.
+
+
+_![GIF4](hhttps://i.imgur.com/O03O4pV.gif)_
+
+
+
 [README.md](README.md) de Noé Díaz Dos Santos para el repositorio [Proyecto Apache](https://github.com/ndiazdossantos/proyectoApache)

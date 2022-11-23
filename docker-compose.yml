@@ -37,9 +37,26 @@ services:
     networks:
       bind9_subnet:
         ipv4_address: 10.1.0.252
+  wireshark:
+    image: lscr.io/linuxserver/wireshark:latest
+    container_name: wireshark
+    cap_add:
+      - NET_ADMIN
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - ./wireshark:/config
+    ports:
+      - 3000:3000 #optional
+    restart: unless-stopped
 networks:
   bind9_subnet:
     external: true
 #primero hay que crearlo con un volumen /confApache:/etc/apache2 y con las siguientes lineas
 #volumes:
 # confApache:
+
