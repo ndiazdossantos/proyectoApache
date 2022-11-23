@@ -396,7 +396,7 @@ $ a2enmod ssl
 
 Nos indicará que debemos eliminar diferentes ficheros de nuestra configuración local (la que mapeamos) de [**```mods-enabled```**](https://github.com/ndiazdossantos/proyectoApache/tree/master/confApache/mods-enabled) que debemos eliminar ya que solo son necesarias las del propio volumen de apache (reiniciamos el servicio cada vez que eliminamos).
 
-Creamos una carpeta dentro de [```confApache``](https://github.com/ndiazdossantos/proyectoApache/blob/master/confApache/) llamada [**```certs```**](https://github.com/ndiazdossantos/proyectoApache/tree/master/confApache/certs) donde generaremos el certificado con el comando:
+Creamos una carpeta dentro de [```confApache```](https://github.com/ndiazdossantos/proyectoApache/blob/master/confApache/) llamada [**```certs```**](https://github.com/ndiazdossantos/proyectoApache/tree/master/confApache/certs) donde generaremos el certificado con el comando:
 
 
 ```s
