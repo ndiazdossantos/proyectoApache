@@ -626,7 +626,7 @@ $ docker-compose up
 Y si probamos a acceder desde ```https://localhost:3000``` podemos comprobar que ya tenemos nuestro **Wireshark** funcionando.
 
 
-_![GIF4](hhttps://i.imgur.com/O03O4pV.gif)_
+_![GIF5](https://github.com/ndiazdossantos/proyectoApache/blob/master/pictures/comprobacionWIreshark.gif)_
 
 
 
