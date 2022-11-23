@@ -394,7 +394,7 @@ $ a2enmod ssl
 
 ```
 
-Nos indicará que debemos eliminar diferentes ficheros de nuestra configuración local (la que mapeamos) de [**````mods-enabled```**](https://github.com/ndiazdossantos/proyectoApache/tree/master/confApache/mods-enabled) que debemos eliminar ya que solo son necesarias las del propio volumen de apache (reiniciamos el servicio cada vez que eliminamos).
+Nos indicará que debemos eliminar diferentes ficheros de nuestra configuración local (la que mapeamos) de [**```mods-enabled```**](https://github.com/ndiazdossantos/proyectoApache/tree/master/confApache/mods-enabled) que debemos eliminar ya que solo son necesarias las del propio volumen de apache (reiniciamos el servicio cada vez que eliminamos).
 
 Creamos una carpeta dentro de [```confApache``](https://github.com/ndiazdossantos/proyectoApache/blob/master/confApache/) llamada [**```certs```**](https://github.com/ndiazdossantos/proyectoApache/tree/master/confApache/certs) donde generaremos el certificado con el comando:
 
@@ -589,6 +589,6 @@ $ docker-compose up
 ```
 Y si entramos en nuestro buscador y realizamos la consulta ```https://localhost/``` ya nos saltará nuestro certificado, eso sin sin validar ya que lo hemos generado nosotros mismos.
 
-_![GIF4](https://i.imgur.com/yaEMq46.gif)_
+_![GIF4](https://github.com/ndiazdossantos/proyectoApache/blob/master/pictures/comprobacionSSL.gif)_
 
 [README.md](README.md) de Noé Díaz Dos Santos para el repositorio [Proyecto Apache](https://github.com/ndiazdossantos/proyectoApache)
