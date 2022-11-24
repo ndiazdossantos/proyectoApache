@@ -658,7 +658,7 @@ Donde indicamos en ```Directoy``` la ruta de nuestro sitio, posteriormente en ``
 
 Realizamos un **restart** del contenedor de Apache y ya podemos comprobar su funcionamiento.
 
-_![GIF6](https://i.imgur.com/k19643d.gif)_
+_![GIF6](https://github.com/ndiazdossantos/proyectoApache/blob/master/pictures/comprobacionAutentificacion.gif)_
 
 
 [README.md](README.md) de Noé Díaz Dos Santos para el repositorio [Proyecto Apache](https://github.com/ndiazdossantos/proyectoApache)
