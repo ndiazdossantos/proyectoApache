@@ -628,6 +628,37 @@ Y si probamos a acceder desde ```https://localhost:3000``` podemos comprobar que
 
 _![GIF5](https://github.com/ndiazdossantos/proyectoApache/blob/master/pictures/comprobacionWIreshark.gif)_
 
+# Añadir autentificación
+
+Para añadir la autentificación primero crearemos una carpeta denominada [**```pass```**](https://github.com/ndiazdossantos/proyectoApache/tree/master/confApache/pass) dentro de [**```confApache```**](https://github.com/ndiazdossantos/proyectoApache/tree/master/confApache).
+
+Una vez creada entraremos al contenedor Apache haciendo click derecho en ```Atach-Shell```, una vez dentro ejecutaremos el comando:
+
+```
+ htpasswd /etc/apache2/pass/password noe
+
+```
+
+En el fichero que indicamos en dicha ruta se guardará una contraseña cifrada que nosotros previamente indiquemos por pantalla, vinculado al usuario que indicamos.
+
+Posteriormente accedemos a [```default-ssl.conf```](https://github.com/ndiazdossantos/proyectoApache/blob/master/confApache/sites-available/default-ssl.conf) donde modificaremos el fichero añadiendiendo el siguiente trozo de código siguiendo el [```Tutorial```](https://httpd.apache.org/docs/2.4/mod/core.html#directory):
+
+```xml
+
+		<Directory /var/www/html/ssl>
+		AuthType Basic
+		AuthName "Restricted Files"
+		AuthUserFile /etc/apache2/pass/password
+		Require user noe
+		</Directory> 
+
+```
+
+Donde indicamos en ```Directoy``` la ruta de nuestro sitio, posteriormente en ```AuthUserFile``` la ruta de nuestro fichero con la password cifrada y por último modificamos el ```Require user``` indicando nuestro usuario.
+
+Realizamos un **restart** del contenedor de Apache y ya podemos comprobar su funcionamiento.
+
+_![GIF6](https://i.imgur.com/k19643d.gif)_
 
 
 [README.md](README.md) de Noé Díaz Dos Santos para el repositorio [Proyecto Apache](https://github.com/ndiazdossantos/proyectoApache)
