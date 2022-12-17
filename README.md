@@ -660,5 +660,14 @@ Realizamos un **restart** del contenedor de Apache y ya podemos comprobar su fun
 
 _![GIF6](https://github.com/ndiazdossantos/proyectoApache/blob/master/pictures/comprobacionAutentificacion.gif)_
 
+# Mysql con Phpyadmin
+
+## Imagen necesaria
+
+Para realizar el despliegue del servicio de Mysql con Phpmyadmin utilizaremos una imagen de docker llamada [**```phpmyadmin```**](https://hub.docker.com/r/phpmyadmin/phpmyadmin/). En ella también encontraremos la documentación necesaria para guiarnos en unos primeros pasos.
+
+## Docker compose
+
+Antes de nada crearemos en nuestro directorio local del proyecto una carpeta llamada [**```Mysql```**]().
 
 [README.md](README.md) de Noé Díaz Dos Santos para el repositorio [Proyecto Apache](https://github.com/ndiazdossantos/proyectoApache)
