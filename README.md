@@ -720,7 +720,7 @@ También indicamos los parámetros de login de nuestro SUPERUSUARIO ya que si no
 Para realizar la comprobación podemos acceder tanto desde ```http://localhost:8080``` como desde ```http://10.1.0.251``` .
 
 
-_![GIF7](https://i.imgur.com/de2egAf.gif)_
+_![GIF7](https://github.com/ndiazdossantos/proyectoApache/blob/master/pictures/comprobacionMysql.gif)_
 
 
 [README.md](README.md) de Noé Díaz Dos Santos para el repositorio [Proyecto Apache](https://github.com/ndiazdossantos/proyectoApache)
