@@ -668,6 +668,59 @@ Para realizar el despliegue del servicio de Mysql con Phpmyadmin utilizaremos un
 
 ## Docker compose
 
-Antes de nada crearemos en nuestro directorio local del proyecto una carpeta llamada [**```Mysql```**]().
+Antes de nada crearemos en nuestro directorio local del proyecto una carpeta llamada **```Mysql```** donde en nuestro  [```docker-compose.yml```](https://github.com/ndiazdossantos/proyectoApache/blob/master/docker-compose.yml) la mapearemos para que se carguen los ficheros necesarios.
+
+```yml
+ phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - db
+    links:
+      - db:db
+    networks:
+      bind9_subnet:
+        ipv4_address: 10.1.0.251
+    ports:
+      - 8080:80
+    environment:
+       MYSQL_USER: admin
+       MYSQL_PASSWORD: castelao
+       MYSQL_ROOT_PASSWORD: castelao
+  db:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: asir2a
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: castelao
+      MYSQL_ROOT_PASSWORD: castelao
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d
+      - ./mysql:/var/lib/mysql
+    networks:
+      bind9_subnet:
+        ipv4_address: 10.1.0.250
+
+```
+
+En dicha configuración estamos añadiendo dos servicios:
+
+* **Mysql**
+* **Phpmyadmin**
+
+Ambos servicios los estamos incluyendo en la misma red que hemos creado para el resto, al igual que a cada uno le asignamos una IP diferente y puerto para acceder al mismo.
+
+Nuestra IP de interés o de acceso será al del **PhpMyAdmin** ya que con el podremos gestionar nuestras bases de datos con interfaz gráfica, a este le hemos asignado la IP **10.1.0.251**.
+
+También indicamos los parámetros de login de nuestro SUPERUSUARIO ya que si no con solo desplegar el servicio no nos serviría para usarlo.
+
+## Comprobación
+
+Para realizar la comprobación podemos acceder tanto desde ```http://localhost:8080``` como desde ```http://10.1.0.251``` .
+
+
+_![GIF7](https://i.imgur.com/de2egAf.gif)_
+
 
 [README.md](README.md) de Noé Díaz Dos Santos para el repositorio [Proyecto Apache](https://github.com/ndiazdossantos/proyectoApache)
